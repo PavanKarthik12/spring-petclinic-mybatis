@@ -1,24 +1,9 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
+name: Test, Upload artifact and Deploy to Heroku
 
-name: Java CI
-
-on: [push]
+on: 
+  - workflow_dispatch
+  - push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-      - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1
-      - name: Build with Gradle
-        run: ./gradlew build
+  call-workflow:
+    uses: PavanKarthik12/Reactjs-Project-custom-actions/.github/workflows/action.yaml@master
